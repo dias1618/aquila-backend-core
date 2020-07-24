@@ -1,35 +1,39 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { Programacao } from "./programacao.entity";
 import { Categoria } from "./categoria.entity";
+import { UsuarioCategoria } from "./usuario-categoria.entity";
 
 
 @Entity()
 export class Usuario{
 
-    @PrimaryGeneratedColumn()
-    id:number;
-
-    @Column()
-    nome:string;
-
-    @Column()
-    login:string;
-
-    @Column()
-    senha:string;
-
-    @OneToMany(type => Programacao, programacoes => programacoes.usuario)
-    programacoes: Programacao[];
-
-    @OneToMany(type => Categoria, categorias => categorias.usuario)
-    categorias: Categoria[];
-
-    constructor(data: {id:number, nome:string, login:string, senha:string}){
+    constructor(data: {id?:number, nome?:string, login?:string, senha?:string}){
         this.id = data && data.id || 0;
         this.nome = data && data.nome || "";
         this.login = data && data.login || "";
         this.senha = data && data.senha || "";
     }
+
+    @PrimaryGeneratedColumn()
+    id:number;
+
+    @Column("varchar", {nullable: true})
+    nome:string;
+
+    @Column("varchar", {nullable: true})
+    login:string;
+
+    @Column("varchar", {nullable: true})
+    senha:string;
+
+    @Column("varchar", {nullable: true})
+    email:string;
+
+    @OneToMany(type => Programacao, programacoes => programacoes.usuario)
+    programacoes: Programacao[];
+
+    @OneToMany(type => UsuarioCategoria, usuariosCategorias => usuariosCategorias.usuario)
+    usuariosCategorias: UsuarioCategoria[];
 
     toJson():string{
         return `{
@@ -37,6 +41,7 @@ export class Usuario{
             "nome": "${this.nome}",
             "login": "${this.login}",
             "senha": "${this.senha}",
+            "email": "${this.email}",
         }`
     }
 }

@@ -8,7 +8,7 @@ export class Programacao{
     @PrimaryGeneratedColumn()
     id:number;
     
-    @Column()
+    @Column("varchar")
     titulo:string;
 
     @OneToMany(type => ProgramacaoVideo, programacoesVideos => programacoesVideos.programacao)

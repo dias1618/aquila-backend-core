@@ -1,0 +1,50 @@
+FAZER TOKEN
+https://accounts.google.com/o/oauth2/auth?
+client_id=1095453620047-9f91puv579k2avlrtkssvi3iud8ek3of.apps.googleusercontent.com&
+redirect_uri=http://localhost:3000&
+scope=https://www.googleapis.com/auth/youtube&
+response_type=token
+
+RESPOSTA TOKEN
+http://localhost:3000/#access_token=ya29.a0AfH6SMCj_sF20Jz8zWq82qjSHXbW7lNeinlTSfnbZkd1DOCPFDkb39PTdVHGjjL3SYhLXhz4tBuWpUlCymhDzb0n5a_RS7agKi8gVAriFdXpyVrmsDkLQ6hzDwwQ6-fZCEALs3grKylyFcrIj07l4ogxYFM7RykhAFk&token_type=Bearer&expires_in=3599&scope=https://www.googleapis.com/auth/youtube
+
+TESTAR TOKEN
+https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=ya29.a0AfH6SMAbHGYTK2O9DwaH2oeFbIC3zXaiHWlDZWAx6u58TBRRY_NVP2o7N2LHmCp3dXbaXyvp7W8tCRRjHwFiTA-jupLmvThebpqDnipKvcwSiiNTRW0IVfyqeuviNwWz_h72mvOMy0PdfcoxglHe6TfwbPl_fedwvLHM
+
+
+FAZER CODIGO DE AUTORIZACAO
+https://accounts.google.com/o/oauth2/v2/auth?
+ scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&
+ access_type=offline&
+ include_granted_scopes=true&
+ response_type=code&
+ redirect_uri=http://localhost:3000&
+ client_id=1095453620047-9f91puv579k2avlrtkssvi3iud8ek3of.apps.googleusercontent.com
+
+RESPOSTA CODIGO DE AUTORIZACAO
+http://localhost:3000/?code=4/2AGASn_w7t2KzUNN9mfWQ3pHkGn4HDHQf44NhlB4D-oRafq2kAz2NvqeoE4075_dj3dyQ91wqbGQZiOfjBfR9lQ&scope=https://www.googleapis.com/auth/drive.metadata.readonly%20https://www.googleapis.com/auth/youtube
+
+
+SOLICITAR REFRESH TOKEN
+https://oauth2.googleapis.com/token?
+client_id=1095453620047-9f91puv579k2avlrtkssvi3iud8ek3of.apps.googleusercontent.com&
+client_secret=huRoWOmBe5RV_0Ykk4-plSur&
+redirect_uri=http://localhost:3000&
+code=4/2AGASn_w7t2KzUNN9mfWQ3pHkGn4HDHQf44NhlB4D-oRafq2kAz2NvqeoE4075_dj3dyQ91wqbGQZiOfjBfR9lQ&
+grant_type=authorization_code
+
+REFRESH TOKEN
+{
+  "access_token": "ya29.a0AfH6SMA1R88a0Wvm1iAZeu7MSgUgy-QSFSoRU7WgZzHlHiwMtd7-T3aTPg_GYI1ht0DXWgdmxylPMyrWS5Hc7WcEbc1kSXNqGrAkb4R28n7snYXyh0pL87XJPa_AVK_TvS6YlM2bufWe4aisUdGQYNAiMDsOpVIeOSM",
+  "expires_in": 3599,
+  "refresh_token": "1//0hj_9bS4qDlPqCgYIARAAGBESNwF-L9IrtuocQZIoMZCFzcGIr5OdNjhFVVLf9wdrN63q2XNmnBHuUj6XO0TGWsNBdDMzHdD8-Cg",
+  "scope": "https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/drive.metadata.readonly",
+  "token_type": "Bearer"
+}
+
+USAR REFRESH TOKEN
+https://oauth2.googleapis.com/token?
+client_id=1095453620047-9f91puv579k2avlrtkssvi3iud8ek3of.apps.googleusercontent.com&
+client_secret=huRoWOmBe5RV_0Ykk4-plSur&
+refresh_token=1//0hj_9bS4qDlPqCgYIARAAGBESNwF-L9IrtuocQZIoMZCFzcGIr5OdNjhFVVLf9wdrN63q2XNmnBHuUj6XO0TGWsNBdDMzHdD8-Cg&
+grant_type=refresh_token

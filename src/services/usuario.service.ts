@@ -1,7 +1,9 @@
 import { LoginDto } from "src/dtos/login.dto";
 import { Usuario } from "src/entities/usuario.entity";
 import { getRepository } from "typeorm";
+import { Injectable } from "@nestjs/common";
 
+@Injectable()
 export class UsuarioService{
 
     async login(loginDto:LoginDto){

@@ -10,7 +10,6 @@ export class AuthController {
   @Post('login')
   @HttpCode(200)
   async login(@Body() loginDto: LoginDto) {
-    console.log('chegou')
     const usuario = await this.usuarioService.login(loginDto);
 
     if(!usuario)

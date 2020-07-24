@@ -12,10 +12,10 @@ export class ProgramacaoVideo{
     @Column()
     diaSemana:DiaSemana
 
-    @Column()
+    @Column("time without time zone")
     horaInicial:number;
 
-    @Column()
+    @Column("time without time zone")
     horaFinal:number;
 
     @ManyToOne(type => Programacao, programacao => programacao.programacoesVideos)
