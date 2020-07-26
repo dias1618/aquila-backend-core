@@ -12,6 +12,11 @@ export class CategoriaService{
         await categoria.save();
     }
 
+    async get():Promise<Categoria[]>{
+        return await getRepository(Categoria).createQueryBuilder('categoria')
+            .getMany();
+    }
+
     async getByIdPlatform(idPlatform:number):Promise<Categoria>{
         return await getRepository(Categoria).createQueryBuilder('categoria')
             .where("categoria.idPlatform = :idPlatform", {idPlatform: idPlatform})

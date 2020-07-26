@@ -3,7 +3,6 @@ import { Programacao } from "./programacao.entity";
 import { Categoria } from "./categoria.entity";
 import { UsuarioCategoria } from "./usuario-categoria.entity";
 
-
 @Entity()
 export class Usuario{
 

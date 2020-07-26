@@ -16,6 +16,8 @@ import { VideoService } from './services/video.service';
 import { CanalService } from './services/canal.service';
 import { RepositoryService } from './services/repository.service';
 import { RepositoryController } from './controllers/repository.controller';
+import { CategoriaController } from './controllers/categoria.controller';
+import { Connection } from 'typeorm';
 
 @Module({
   imports: [TypeOrmModule.forRoot()],
@@ -24,7 +26,8 @@ import { RepositoryController } from './controllers/repository.controller';
     AuthController,
     UsuarioController,
     VideoController,
-    RepositoryController
+    RepositoryController,
+    CategoriaController
   ],
   providers: [
     AppService,
