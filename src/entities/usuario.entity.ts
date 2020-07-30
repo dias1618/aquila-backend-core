@@ -1,16 +1,19 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity } from "typeorm";
 import { Programacao } from "./programacao.entity";
 import { Categoria } from "./categoria.entity";
 import { UsuarioCategoria } from "./usuario-categoria.entity";
+import { UsuarioVideo } from "./usuario-video.entity";
 
 @Entity()
-export class Usuario{
+export class Usuario extends BaseEntity{
 
-    constructor(data: {id?:number, nome?:string, login?:string, senha?:string}){
+    constructor(data: {id?:number, nome?:string, login?:string, senha?:string, email?:string}){
+        super();
         this.id = data && data.id || 0;
         this.nome = data && data.nome || "";
         this.login = data && data.login || "";
         this.senha = data && data.senha || "";
+        this.email = data && data.email || "";
     }
 
     @PrimaryGeneratedColumn()
@@ -33,6 +36,9 @@ export class Usuario{
 
     @OneToMany(type => UsuarioCategoria, usuariosCategorias => usuariosCategorias.usuario)
     usuariosCategorias: UsuarioCategoria[];
+
+    @OneToMany(type => UsuarioVideo, usuariosVideos => usuariosVideos.usuario)
+    usuariosVideos: UsuarioVideo[];
 
     toJson():string{
         return `{

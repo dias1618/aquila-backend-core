@@ -1,10 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
 import { DiaSemana } from "src/enums/dia-semana.enum";
 import { Programacao } from "./programacao.entity";
 import { Video } from "./video.entity";
 
 @Entity()
-export class ProgramacaoVideo{
+export class ProgramacaoVideo extends BaseEntity{
 
     @PrimaryGeneratedColumn()
     id:number;

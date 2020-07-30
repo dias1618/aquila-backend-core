@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthController } from './controllers/auth.controller';
 import { UsuarioService } from './services/usuario.service';
-import { UsuarioController } from './controllers/usuario.controller';
 import { YoutubeApiService } from './services/video-api/youtube-api/youtube-api.service';
 import { VideoController } from './controllers/video.controller';
 import { AxiosCommunicationService } from './services/external-communication/axios-communication.service';
@@ -17,14 +16,15 @@ import { CanalService } from './services/canal.service';
 import { RepositoryService } from './services/repository.service';
 import { RepositoryController } from './controllers/repository.controller';
 import { CategoriaController } from './controllers/categoria.controller';
-import { Connection } from 'typeorm';
+import { HistoryController } from './controllers/history.controller';
+import { UsuarioVideoService } from './services/usuario-video.service';
 
 @Module({
   imports: [TypeOrmModule.forRoot()],
   controllers: [
     AppController,
     AuthController,
-    UsuarioController,
+    HistoryController,
     VideoController,
     RepositoryController,
     CategoriaController
@@ -42,7 +42,8 @@ import { Connection } from 'typeorm';
     CategoriaService,
     VideoService,
     CanalService,
-    RepositoryService
+    RepositoryService,
+    UsuarioVideoService
   ],
 })
 export class AppModule {}

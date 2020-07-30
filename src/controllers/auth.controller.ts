@@ -2,8 +2,9 @@ import { Controller, Get, Post, Body, HttpException, HttpStatus, HttpCode } from
 import { UsuarioService } from '../services/usuario.service';
 import { LoginDto } from 'src/dtos/login.dto';
 import { UsuarioNaoCadastradoException } from 'src/exceptions/usuario-nao-cadastrado.exception';
+import { SignupDto } from 'src/dtos/singup.dto';
 
-@Controller()
+@Controller('auth')
 export class AuthController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
@@ -19,4 +20,9 @@ export class AuthController {
   }
 
   
+  @Post('signup')
+  @HttpCode(200)
+  async createUsuario(@Body() signupDto:SignupDto) {
+      return await this.usuarioService.create(signupDto);
+  }
 }
