@@ -25,10 +25,12 @@ export class RepositoryService{
         return categorias;
     }
 
-    async loadVideos():Promise<Video[]>{
+    async loadVideos(categoria:Categoria):Promise<Video[]>{
         let videos:Video[] = [];
         for(let repository of this.repositories){
-            videos.push(...await repository.loadVideos());
+            let videosBuscados = await repository.loadVideos(categoria);
+            if(videosBuscados)
+                videos.push(...videosBuscados);
         }
         return videos;
     }

@@ -3,5 +3,5 @@ import { Categoria } from "src/entities/categoria.entity";
 
 export abstract class RepositoryVideo{
     abstract loadCategorias():Promise<Categoria[]>;
-    abstract loadVideos(): Promise<Video[]>;
+    abstract loadVideos(categoria:Categoria): Promise<Video[]>;
 }

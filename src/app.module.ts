@@ -18,6 +18,7 @@ import { RepositoryController } from './controllers/repository.controller';
 import { CategoriaController } from './controllers/categoria.controller';
 import { HistoryController } from './controllers/history.controller';
 import { UsuarioVideoService } from './services/usuario-video.service';
+import { RecommendationService } from './services/recommendation/recommendation.service';
 
 @Module({
   imports: [TypeOrmModule.forRoot()],
@@ -43,7 +44,8 @@ import { UsuarioVideoService } from './services/usuario-video.service';
     VideoService,
     CanalService,
     RepositoryService,
-    UsuarioVideoService
+    UsuarioVideoService,
+    RecommendationService,
   ],
 })
 export class AppModule {}

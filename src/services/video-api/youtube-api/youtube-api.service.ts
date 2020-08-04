@@ -39,7 +39,7 @@ export class YoutubeApiService implements RepositoryVideo{
         return categorias;
     }
 
-    async loadVideos():Promise<Video[]>{
+    async loadVideos(categoria:Categoria):Promise<Video[]>{
 
         try{
             await this.config.verifyToken();
@@ -48,7 +48,7 @@ export class YoutubeApiService implements RepositoryVideo{
             
             let accessKey = this.config.loadParam('access_key');
             let response = await this.axios.get(
-                `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&chart=mostPopular&maxResults=50&regionCode=BR&key=${accessKey}`, 
+                `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&chart=mostPopular&maxResults=50&regionCode=BR&videoCategoryId=${categoria.idPlatform}&key=${accessKey}`, 
                 new AxiosHeader({
                     key: 'Authorization',
                     value: this.config.loadParam('access_token')
