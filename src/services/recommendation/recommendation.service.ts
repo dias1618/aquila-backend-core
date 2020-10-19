@@ -5,8 +5,36 @@ import { Categoria } from "src/entities/categoria.entity";
 import { getRepository } from "typeorm";
 import { UsuarioCategoria } from "src/entities/usuario-categoria.entity";
 import { UsuarioVideo } from "src/entities/usuario-video.entity";
+import { UsuarioService } from "../usuario.service";
+import { ProgramacaoService } from "../programacao.service";
+import { ProgramacaoVideo } from "src/entities/programacao-video.entity";
 
 export class RecommendationService{
+
+    constructor(
+        private _usuarioService:UsuarioService,
+        private _programacaoService:ProgramacaoService,
+    ){}
+
+    async recomendarProgramacoes(idUsuario:number):Promise<any>{
+
+        let usuario:Usuario = await this._usuarioService.get(idUsuario);
+
+        let categorias:Categoria[] = await this.buscarCategorias(idUsuario);
+        for(let categoria of categorias){
+            let programacao:Programacao = new Programacao({titulo: categoria.nome});
+            programacao.usuario = usuario;
+            programacao = await this._programacaoService.save(programacao);
+
+            let videosRecomendados:Video[] = await this.buscarVideosRecomendados([categoria], []);  
+            for(let videoRecomendado of videosRecomendados){
+                let programacaoVideo:ProgramacaoVideo = new ProgramacaoVideo({});
+                programacaoVideo.programacao = programacao;
+                programacaoVideo.video = videoRecomendado;
+                programacaoVideo = await this._programacaoService.addVideo(programacaoVideo);
+            }
+        }
+    }
 
 
     async recomendarVideos(idUsuario:number):Promise<Video[]>{
@@ -63,6 +91,7 @@ export class RecommendationService{
         return await query.getMany();
 
     }
+    
 
 
 }

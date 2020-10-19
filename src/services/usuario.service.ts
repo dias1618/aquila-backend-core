@@ -30,7 +30,6 @@ export class UsuarioService{
             .where("usuario.login = :login", {login: loginDto.login})
             .andWhere("usuario.senha = :senha", {senha: loginDto.senha})
             .getOne();
-
         return usuarioRepository;
     }
 

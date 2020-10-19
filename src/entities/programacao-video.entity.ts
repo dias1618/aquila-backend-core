@@ -6,17 +6,14 @@ import { Video } from "./video.entity";
 @Entity()
 export class ProgramacaoVideo extends BaseEntity{
 
+    constructor(data: {id?:number}){
+        super();
+        this.id = data && data.id || 0;
+    }
+
+
     @PrimaryGeneratedColumn()
     id:number;
-
-    @Column()
-    diaSemana:DiaSemana
-
-    @Column("time without time zone")
-    horaInicial:number;
-
-    @Column("time without time zone")
-    horaFinal:number;
 
     @ManyToOne(type => Programacao, programacao => programacao.programacoesVideos)
     programacao: Programacao;

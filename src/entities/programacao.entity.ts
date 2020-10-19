@@ -5,6 +5,12 @@ import { Usuario } from "./usuario.entity";
 @Entity()
 export class Programacao extends BaseEntity{
 
+    constructor(data: {id?:number, titulo?:string}){
+        super();
+        this.id = data && data.id || 0;
+        this.titulo = data && data.titulo || "";
+    }
+
     @PrimaryGeneratedColumn()
     id:number;
     
@@ -17,4 +23,10 @@ export class Programacao extends BaseEntity{
     @ManyToOne(type => Usuario, usuario => usuario.programacoes)
     usuario: Usuario;
 
+    toJson():string{
+        return `{
+            "id": ${this.id},
+            "titulo": "${this.titulo}"
+        }`
+    }
 }
