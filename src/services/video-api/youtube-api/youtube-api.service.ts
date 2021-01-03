@@ -20,8 +20,10 @@ export class YoutubeApiService implements RepositoryVideo{
     ){}
 
     async loadCategorias(){
+        console.log('entra')
         let categorias:Categoria[] = [];
         let accessKey = this.config.loadParam('access_key');
+        console.log('accessKey = ', accessKey)
         let response = await this.axios.get(
             `https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=BR&hl=pt&key=${accessKey}`, 
             new AxiosHeader({
@@ -29,6 +31,7 @@ export class YoutubeApiService implements RepositoryVideo{
                 value: this.config.loadParam('access_token')
             })
         );
+        console.log('response = ', response)
         for(let item of response.data.items){
             let categoria = new Categoria({
                 nome: item.snippet.title,

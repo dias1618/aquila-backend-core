@@ -12,7 +12,7 @@ export class AuthController {
   @HttpCode(200)
   async login(@Body() loginDto: LoginDto) {
     const usuario = await this.usuarioService.login(loginDto);
-
+    
     if(!usuario)
         throw new UsuarioNaoCadastradoException();
 

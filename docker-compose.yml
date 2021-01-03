@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  negai-backend:
+    build: .
+    image: dias1618/aquila-backend-core
+    container_name: aquila-backend-core
+    ports:
+        - 3001:3000
+    restart: on-failure
+    networks:
+        - negai-backend_postgres-network
+
+networks:
+    negai-backend_postgres-network:
+        external:
+            name: negai-backend_postgres-network
