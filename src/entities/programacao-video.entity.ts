@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
-import { DiaSemana } from "src/enums/dia-semana.enum";
 import { Programacao } from "./programacao.entity";
 import { Video } from "./video.entity";
 
