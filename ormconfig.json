@@ -1,9 +1,9 @@
 {
     "type": "postgres",
-    "host": "localhost",
+    "host": "database",
     "port": 15432,
     "username": "postgres",
-    "password": "axlrby216",
+    "password": "1234",
     "database": "aquila",
     "entities": ["dist/**/*.entity{.ts,.js}"],
     "synchronize": true
