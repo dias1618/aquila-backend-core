@@ -11,9 +11,15 @@ import { CategoriaController } from './controllers/categoria.controller';
 import { HistoryController } from './controllers/history.controller';
 import { UsuarioVideoService } from './services/usuario-video.service';
 import { RecommendationService } from './services/recommendation.service';
+import { ScheduleModule } from '@nestjs/schedule';
+import { TasksService } from './services/task.service';
+import { RecordService } from './services/record.service';
 
 @Module({
-  imports: [TypeOrmModule.forRoot()],
+  imports: [
+    TypeOrmModule.forRoot(),
+    ScheduleModule.forRoot()
+  ],
   controllers: [
     AppController,
     HistoryController,
@@ -28,7 +34,8 @@ import { RecommendationService } from './services/recommendation.service';
     CategoriaService,
     VideoService,
     UsuarioVideoService,
-    
+    TasksService,
+    RecordService
   ],
 })
 export class AppModule {}
