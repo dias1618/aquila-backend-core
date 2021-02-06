@@ -10,12 +10,12 @@ export class RecordService{
     ){}
 
     async cadastrarNovasCategorias():Promise<any>{
-        let response = await this.axios.post(`http://aquila-backend-records:3000/repositories/categorias`, null, null);
+        let response = await this.axios.get(`http://aquila-backend-records:3000/repositories/categorias`);
         return response.data;
     }
 
     async cadastrarNovosVideos():Promise<any>{
-        let response = await this.axios.post(`http://aquila-backend-records:3000/repositories/videos`, null, null);
+        let response = await this.axios.get(`http://aquila-backend-records:3000/repositories/videos`);
         return response.data;
     }
 
