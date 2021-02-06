@@ -7,7 +7,7 @@ export class TasksService {
   
     constructor(private _recordService:RecordService){}
 
-    @Cron(CronExpression.EVERY_WEEKEND)
+    @Cron(CronExpression.EVERY_30_SECONDS)
     async handleCron() {
         await this._recordService.cadastrarNovasCategorias();
         await this._recordService.cadastrarNovosVideos();
