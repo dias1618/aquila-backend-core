@@ -10,7 +10,7 @@ export class RecommendationService{
     ){}
 
     async recomendarVideos(idUsuario:number):Promise<Video[]>{
-        let response = await this.axios.get(`http://localhost:3004/recommendations?idUsuario=${idUsuario}`);
+        let response = await this.axios.get(`http://aquila-backend-recommendation:3000/recommendations?idUsuario=${idUsuario}`);
         return response.data;
     }
 
