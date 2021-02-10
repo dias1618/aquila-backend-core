@@ -16,16 +16,16 @@ export class Canal extends BaseEntity{
     @PrimaryGeneratedColumn()
     id:number;
 
-    @Column("varchar")
+    @Column("varchar", {nullable: true})
     idPlatform:string;
 
     @Column("varchar")
     titulo:string;
 
-    @Column("varchar")
+    @Column("varchar", {nullable: true})
     descricao:string;
 
-    @Column("varchar")
+    @Column("varchar", {nullable: true})
     urlImagem:string;
 
     @OneToMany(type => Video, videos => videos.canal)
